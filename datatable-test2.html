@@ -1,0 +1,245 @@
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/1.0.5/css/dataTables.responsive.css">
+<link rel="stylesheet" href="http://projects.ctmirror.org/libs/universal.css" type="text/css">
+
+</head>
+
+<body>
+
+
+    <div id="table" style="text-decoration: none; padding-bottom: .2em; font-size:.8em; font-family: lato, Arial, sans-serif;"></div>
+
+
+        <div class='sourceline' id='headersource'><span>DATA: Department of Emergency Services and Public Protection, Federal Bureau of Investigation</div>
+        <div class='smallByLine' id='headerbyline'>ANDREW BA TRAN/CTMIRROR.ORG</div>
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src='https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/responsive/1.0.5/js/dataTables.responsive.js'></script>
+<script>
+
+var thousand = [
+  ["Andover",3192,1,"Connecticut State Police","0.313",0.000,0.000,19.424],
+  ["Ansonia",19507,51,"Police Department","2.614",0.103,1.538,48.239],
+  ["Ashford",4308,0,"Connecticut State Police","Shared CSP",0.000,0.000,13.928],
+  ["Avon",16644,35,"Police Department","2.103",0.000,0.000,21.930],
+  ["Barkhamsted",3673,1,"Connecticut State Police","0.272",0.000,0.000,19.603],
+  ["Beacon Falls",5515,1,"Connecticut State Police","0.181",0.000,0.000,37.534],
+  ["Berlin",19152,53,"Police Department","2.767",0.000,0.522,46.836],
+  ["Bethany",5299,1,"Connecticut State Police","0.189",0.000,0.000,17.739],
+  ["Bethel",18995,47,"Police Department","2.474",0.000,0.000,34.641],
+  ["Bethlehem",3597,1,"Connecticut State Police","0.278",0.000,0.000,18.627],
+  ["Bloomfield",20594,57,"Police Department","2.768",0.049,3.399,68.078],
+  ["Bolton",5275,2,"Connecticut State Police","0.379",0.000,3.791,19.905],
+  ["Bozrah",2479,0,"Connecticut State Police","Shared CSP",0.000,8.068,27.027],
+  ["Branford",30158,61,"Police Department","2.023",0.000,0.000,54.778],
+  ["Bridgeport",146706,476,"Police Department","3.245",0.136,7.566,102.566],
+  ["Bridgewater",1919,1,"Connecticut State Police","0.521",0.000,0.000,16.154],
+  ["Bristol",63150,138,"Police Department","2.185",0.016,1.900,57.862],
+  ["Brookfield",16470,41,"Police Department","2.489",0.000,0.607,28.719],
+  ["Brooklyn",7543,2,"Connecticut State Police","0.265",0.000,2.651,25.984],
+  ["Burlington",8611,3,"Connecticut State Police","0.348",0.000,1.161,12.774],
+  ["Canaan",1135,0,"Connecticut State Police","Shared CSP",0.000,0.000,12.335],
+  ["Canterbury",4934,0,"Connecticut State Police","Shared CSP",0.000,0.000,25.740],
+  ["Canton",9294,21,"Connecticut State Police","2.260",0.000,1.076,23.564],
+  ["Chaplin",2363,1,"Connecticut State Police","0.423",0.000,0.000,24.545],
+  ["Cheshire",30011,60,"Police Department","1.999",0.000,0.000,21.592],
+  ["Chester",3934,1,"Connecticut State Police","0.254",0.000,0.000,16.014],
+  ["Clinton",13769,34,"Police Department","2.469",0.000,5.084,58.973],
+  ["Colchester",15299,2,"Connecticut State Police","0.131",0.000,0.654,21.701],
+  ["Colebrook",1548,0,"Police Department","Shared CSP",0.000,0.000,16.796],
+  ["Columbia",5226,1,"Connecticut State Police","0.191",0.000,0.000,13.012],
+  ["Cornwall",1510,0,"Connecticut State Police","Shared CSP",0.000,0.000,30.464],
+  ["Coventry",12095,19,"Police Department","1.571",0.000,4.134,38.446],
+  ["Cromwell",13532,35,"Police Department","2.586",0.000,0.739,53.577],
+  ["Danbury",78697,152,"Police Department","1.931",0.013,4.193,39.519],
+  ["Darien",20615,58,"Police Department","2.813",0.000,0.000,17.317],
+  ["Deep River",4848,1,"Connecticut State Police","0.206",0.000,0.000,18.564],
+  ["Derby",13028,33,"Police Department","2.533",0.000,0.768,62.327],
+  ["Durham",6968,1,"Connecticut State Police","0.144",0.000,0.000,21.814],
+  ["East Granby",4989,3,"Connecticut State Police","0.601",0.000,2.004,16.837],
+  ["East Haddam",8762,2,"Connecticut State Police","0.228",0.000,1.141,35.837],
+  ["East Hampton",14039,17,"Police Department","1.211",0.071,1.425,33.977],
+  ["East Hartford",52125,158,"Police Department","3.031",0.000,4.029,74.916],
+  ["East Haven",29637,52,"Police Department","1.755",0.000,0.000,56.281],
+  ["East Lyme",19051,1,"Connecticut State Police","0.052",0.000,1.050,23.358],
+  ["East Windsor",10323,30,"Police Department","2.906",0.000,2.906,70.522],
+  ["Eastford",1701,0,"Connecticut State Police","Shared CSP",0.000,0.000,8.818],
+  ["Easton",7645,16,"Police Department","2.093",0.000,0.000,8.110],
+  ["Ellington",13586,5,"Connecticut State Police","0.368",0.000,0.000,13.764],
+  ["Enfield",47538,112,"Police Department","2.356",0.021,0.000,38.222],
+  ["Essex",6841,1,"Connecticut State Police","0.146",0.000,0.000,14.910],
+  ["Fairfield",60290,111,"Police Department","1.841",0.000,0.166,38.000],
+  ["Farmington",24857,62,"Police Department","2.494",0.000,0.000,52.259],
+  ["Franklin",1930,0,"Connecticut State Police","Shared CSP",0.000,0.000,23.834],
+  ["Glastonbury",33515,73,"Police Department","2.178",0.000,0.597,23.154],
+  ["Goshen",2835,0,"Connecticut State Police","Shared CSP",0.000,0.000,14.109],
+  ["Granby",10878,18,"Police Department","1.655",0.000,3.677,28.314],
+  ["Greenwich",64243,176,"Police Department","2.740",0.000,0.467,14.461],
+  ["Griswold",11363,2,"Connecticut State Police","0.176",0.000,0.880,26.313],
+  ["Groton",31596,70,"Police Department","2.215",0.000,2.215,46.588],
+  ["Groton City",9733,34,"Police Department","3.493",0.000,4.110,49.625],
+  ["Groton Long Point",631,7,"Police Department","11.094",0.000,0.000,36.450],
+  ["Guilford",22499,45,"Police Department","2.000",0.000,1.333,29.912],
+  ["Haddam",7525,2,"Connecticut State Police","0.266",0.000,0.000,20.598],
+  ["Hamden",59839,124,"Police Department","2.072",0.050,1.504,47.177],
+  ["Hampton",1847,0,"Connecticut State Police","Shared CSP",0.000,0.000,11.911],
+  ["Hartford",127830,511,"Police Department","3.997",0.211,4.303,106.571],
+  ["Hartland",2116,0,"Connecticut State Police","Shared CSP",0.000,0.000,8.034],
+  ["Harwinton",5552,2,"Police Department","0.360",0.000,0.000,23.955],
+  ["Hebron",9052,2,"Police Department","0.221",0.000,0.000,13.257],
+  ["Kent",3005,0,"Connecticut State Police","Shared CSP",0.000,0.000,29.617],
+  ["Killingly",17318,4,"Police Department","0.231",0.000,1.155,31.008],
+  ["Killingworth",6328,1,"Police Department","0.158",0.000,0.000,14.539],
+  ["Lebanon",7263,1,"Police Department","0.138",0.000,0.000,18.312],
+  ["Ledyard",15442,1,"Police Department","0.065",0.000,1.295,26.227],
+  ["Lisbon",4278,1,"Police Department","0.234",0.000,0.000,68.490],
+  ["Litchfield",8743,2,"Police Department","0.229",0.000,1.144,22.304],
+  ["Lyme",2120,0,"Connecticut State Police","Shared CSP",0.000,0.000,17.453],
+  ["Madison",18776,38,"Police Department","2.024",0.000,0.000,14.274],
+  ["Manchester",57556,151,"Police Department","2.624",0.017,1.564,69.306],
+  ["Mansfield",21788,8,"Connecticut State Police","0.367",0.000,0.918,21.939],
+  ["Marlborough",6003,2,"Connecticut State Police","0.333",0.000,0.000,13.327],
+  ["Meriden",61238,133,"Police Department","2.172",0.000,1.470,67.099],
+  ["Middlebury",6783,17,"Police Department","2.506",0.000,0.000,21.819],
+  ["Middlefield",4419,1,"Connecticut State Police","0.226",0.000,2.263,15.841],
+  ["Middletown",45386,112,"Police Department","2.468",0.000,2.203,49.839],
+  ["Milford",54997,123,"Police Department","2.236",0.018,0.000,64.931],
+  ["Monroe",20235,48,"Police Department","2.372",0.000,1.483,18.928],
+  ["Montville",19499,1,"Connecticut State Police","0.051",0.000,1.026,22.976],
+  ["Morris",2420,0,"Connecticut State Police","Shared CSP",0.000,0.000,19.008],
+  ["Naugatuck",32582,70,"Police Department","2.148",0.000,3.069,43.368],
+  ["New Britain",75217,152,"Police Department","2.021",0.040,0.399,85.685],
+  ["New Canaan",20393,49,"Police Department","2.403",0.000,0.490,11.622],
+  ["New Fairfield",14672,7,"Connecticut State Police","0.477",0.000,0.000,9.610],
+  ["New Hartford",6401,2,"Connecticut State Police","0.312",0.000,0.000,17.341],
+  ["New Haven",129983,527,"Police Department","4.054",0.262,3.924,139.380],
+  ["New London",26991,112,"Police Department","4.150",0.111,7.039,92.549],
+  ["New Milford",28515,63,"Police Department","2.209",0.000,0.351,42.925],
+  ["Newington",30814,64,"Police Department","2.077",0.000,0.974,48.063],
+  ["Newtown",26318,50,"Police Department","1.900",0.000,2.280,18.124],
+  ["Norfolk",1744,1,"Connecticut State Police","0.573",0.000,0.000,26.376],
+  ["North Branford",14623,27,"Police Department","1.846",0.000,0.000,37.270],
+  ["North Canaan",3524,1,"Connecticut State Police","0.284",0.000,0.000,22.134],
+  ["North Haven",24219,58,"Police Department","2.395",0.000,0.000,48.887],
+  ["North Stonington",5249,0,"Police Department","Shared CSP",0.000,0.000,31.244],
+  ["Norwalk",87216,201,"Police Department","2.305",0.034,1.835,55.529],
+  ["Norwich",37976,90,"Police Department","2.370",0.053,6.056,66.068],
+  ["Old Lyme",7787,2,"Connecticut State Police","0.257",0.000,0.000,15.153],
+  ["Old Saybrook",10900,31,"Police Department","2.844",0.000,2.752,31.835],
+  ["Orange",13915,51,"Police Department","3.665",0.000,0.719,53.899],
+  ["Oxford",10326,5,"Connecticut State Police","0.484",0.000,0.000,15.301],
+  ["Plainfield",15370,19,"Police Department","1.236",0.000,0.651,8.133],
+  ["Plainville",18220,41,"Police Department","2.250",0.000,1.098,60.099],
+  ["Plymouth",12231,23,"Police Department","1.880",0.000,0.000,26.817],
+  ["Pomfret",3993,0,"Connecticut State Police","Shared CSP",0.000,0.000,11.019],
+  ["Portland",9181,12,"Police Department","1.307",0.000,0.000,17.318],
+  ["Preston",4929,2,"Connecticut State Police","0.406",0.000,0.000,20.491],
+  ["Prospect",9155,1,"Connecticut State Police","0.109",0.000,0.000,17.804],
+  ["Putnam",7232,18,"Police Department","2.489",0.000,4.148,79.369],
+  ["Putnam",2233,0,"Connecticut State Police","Shared CSP",0.000,0.000,47.470],
+  ["Redding",8696,21,"Police Department","2.415",0.000,0.000,13.569],
+  ["Ridgefield",24859,43,"Police Department","1.730",0.000,0.000,6.678],
+  ["Rocky Hill",18890,40,"Police Department","2.118",0.000,0.529,27.316],
+  ["Roxbury",2245,1,"Police Department","0.445",0.000,0.000,17.817],
+  ["Salem",4056,2,"Police Department","0.493",0.000,0.000,14.300],
+  ["Salisbury",4183,1,"Police Department","0.239",0.000,0.000,14.822],
+  ["Scotland",1635,0,"Connecticut State Police","Shared CSP",0.000,0.000,15.291],
+  ["Seymour",16249,41,"Police Department","2.523",0.000,0.615,34.094],
+  ["Sharon",3122,0,"Connecticut State Police","Shared CSP",0.000,0.000,11.531],
+  ["Shelton",40061,61,"Police Department","1.523",0.000,0.499,28.357],
+  ["Sherman",4025,1,"Connecticut State Police","0.248",0.000,0.000,12.422],
+  ["Simsbury",24430,45,"Police Department","1.842",0.000,0.409,17.274],
+  ["Somers",10952,6,"Connecticut State Police","0.548",0.000,0.913,16.070],
+  ["South Windsor",25667,55,"Police Department","2.143",0.000,2.727,37.480],
+  ["Southbury",19520,1,"Connecticut State Police","0.051",0.051,1.025,23.975],
+  ["Southington",41772,87,"Police Department","2.083",0.024,2.155,45.054],
+  ["Sprague",3125,1,"Connecticut State Police","0.320",0.000,9.600,30.400],
+  ["Stafford",11888,5,"Connecticut State Police","0.421",0.000,1.682,20.020],
+  ["Stamford",123104,291,"Police Department","2.364",0.049,2.518,41.274],
+  ["Sterling",3259,1,"Connecticut State Police","0.307",0.000,0.000,30.071],
+  ["Stonington",18826,47,"Police Department","2.497",0.000,2.656,43.397],
+  ["Stratford",52545,101,"Police Department","1.922",0.019,1.713,64.992],
+  ["Suffield",14250,23,"Police Department","1.614",0.000,0.702,19.860],
+  ["Thomaston",7890,14,"Police Department","1.774",0.000,0.000,36.375],
+  ["Thompson",9334,0,"Connecticut State Police","Shared CSP",0.000,2.143,27.748],
+  ["Tolland",13822,5,"Connecticut State Police","0.362",0.000,0.723,11.286],
+  ["Torrington",37011,90,"Police Department","2.432",0.000,4.053,45.419],
+  ["Trumbull",36002,82,"Police Department","2.278",0.000,0.000,40.359],
+  ["Union",727,0,"Connecticut State Police","Shared CSP",0.000,0.000,19.257],
+  ["Vernon",29504,65,"Police Department","2.203",0.000,2.373,25.251],
+  ["Voluntown",2658,0,"Connecticut State Police","Shared CSP",0.000,0.000,25.207],
+  ["Wallingford",45240,94,"Police Department","2.078",0.044,0.442,41.799],
+  ["Warren",1318,0,"Connecticut State Police","Shared CSP",0.000,7.587,9.105],
+  ["Washington",3780,1,"Connecticut State Police","0.265",0.000,0.000,19.048],
+  ["Waterbury",112788,353,"Police Department","3.130",0.062,0.798,83.449],
+  ["Waterford",20138,54,"Police Department","2.681",0.000,0.000,56.460],
+  ["Watertown",22775,47,"Police Department","2.064",0.000,1.317,47.113],
+  ["West Hartford",66858,143,"Police Department","2.139",0.015,0.598,45.365],
+  ["West Haven",55054,133,"Police Department","2.416",0.018,0.000,48.589],
+  ["Westbrook",6614,3,"Connecticut State Police","0.454",0.000,1.512,16.027],
+  ["Weston",10553,15,"Police Department","1.421",0.000,0.000,11.182],
+  ["Westport",27074,84,"Police Department","3.103",0.037,1.108,30.731],
+  ["Wethersfield",27623,58,"Police Department","2.100",0.000,2.896,28.636],
+  ["Willimantic",17327,44,"Police Department","2.539",0.000,0.577,55.174],
+  ["Willington",6266,0,"Connecticut State Police","Shared CSP",0.000,0.000,11.491],
+  ["Wilton",18540,47,"Police Department","2.535",0.000,0.000,13.323],
+  ["Winchester",11213,23,"Police Department","2.051",0.000,3.567,55.917],
+  ["Windham",6705,0,"Connecticut State Police","Shared CSP",0.149,1.491,39.075],
+  ["Windsor",29689,59,"Police Department","1.987",0.000,3.031,39.611],
+  ["Windsor Locks",12663,29,"Police Department","2.290",0.000,0.000,42.723],
+  ["Wolcott",15997,33,"Police Department","2.063",0.000,1.250,38.007],
+  ["Woodbridge",9444,34,"Police Department","3.600",0.000,0.000,23.931],
+  ["Woodbury",9671,1,"Connecticut State Police","0.103",0.000,0.000,17.475],
+  ["Woodstock",7592,0,"Connecticut State Police","Shared CSP",0.000,1.317,11.986]
+]
+;
+
+
+$(document).ready(function() {
+    $('#table').html( '<table cellpadding="0" cellspacing="0" border="0" class="display compact" id="adjusted" width="100%"></table>' );
+ 
+    $('#adjusted').dataTable( {
+        "data": thousand,
+        dom: '<"graphicHeader">frtip',
+
+        responsive: true,
+        
+        scrollY:"350px",
+        scrollCollapse:true,
+        
+        paging: false,
+        
+        <!--  Change the "Show XX entries" options. The  array on the left is the number, the array on the right is the text. -->
+        <!-- If 99 is all the options, then you can say "All" - If there's 60 total, change 99 to total, etc '-->
+        aLengthMenu: [[10, 25, 50], [10, 25, 50]],
+        
+        iDisplayLength: 15,
+        
+
+        order: [[0, "asc"]],
+
+        "columns": [
+ 			{ "title": "Department"  },
+            { "title": "Population",},
+       		{ "title": "Total personnel"},
+            { "title": "Type"},
+            { "title": "Personnel per 1,000" },
+            { "title": "Murders per 1,000"  },
+  			{ "title": "Rape committed per 1,000"  },
+            { "title": "Crime per 1,000"  }
+        ],
+    } );   
+    
+ 	$("div.graphicHeader").html("If you need explainer text, put it here");
+
+} );
+
+</script>
+</html>
