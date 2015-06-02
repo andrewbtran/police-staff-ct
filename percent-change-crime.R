@@ -323,16 +323,16 @@ joined_df$crime.rate <- (joined_df$Pop.of.Jurisdaiction/joined_df$total)*1000
 cor(joined_df$crime.rate, joined_df$Employee.Rate.Per.1.000.Pop.)
 
 # this section creates a featured image for the blog post
-fg <- ggplot(joined_df, aes(x=Employee.Rate.Per.1.000.Pop., y=Violent.Crime.rate, label=Department)) +
-  geom_point(shape=1) +
-  geom_text(aes(label=Department),hjust=--.5, vjust=-.5, size=4) +
-  geom_smooth(method=lm)
+fg <- ggplot(joined_df, aes(x=Employee.Rate.Per.1.000.Pop., y=Violent.Crime.rate)) +
+  geom_point(aes(text=Department)) +
+  geom_smooth(method=lm) +
+  theme_minimal()
 fg <- fg + ggtitle("Violent crime in urban areas of Connecticut")
 fg <- fg + labs(x="Police department staff per capita", y="Violent crime rate")
 
 py <- plotly()
 
-r <- py$ggplotly(fg) #Problem here. Getting an error
+r <- py$ggplotly(fg) # THIS WORKS! 
 
 # The rest of this is experimenting with the plotly API to make ggplot chart interactive
 
